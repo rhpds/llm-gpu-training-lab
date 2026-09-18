@@ -80,8 +80,30 @@ approval_checklist:
     prerequisites_verifiable: false
     assessment_strategy: ''
     catalog_gap: ''
-    design_overview: ''
-    module_summaries: []
+    design_overview: "This lab addresses the gap in the RHDP AI catalog by giving intermediate
+      Tech Sales professionals a hands-on GPU-accelerated LLM fine-tuning experience on Red Hat
+      OpenShift AI. Students work through a complete PyTorch fine-tuning lifecycle — GPU environment
+      verification, pre-trained model loading, training with automatic mixed precision, and GPU
+      memory profiling — on a dedicated OpenShift cluster with NVIDIA GPU nodes. The lab equips
+      technical sellers with direct experience they can reference in customer conversations about
+      AI workload sizing and OpenShift AI's GPU capabilities."
+    module_summaries:
+      - title: "PyTorch GPU Setup"
+        overview: "Students verify CUDA availability and GPU device properties within an
+          RHOAI-managed Jupyter workbench, then run basic PyTorch tensor operations to confirm
+          device placement and practice real-time GPU memory tracking."
+      - title: "Loading Pre-trained Models"
+        overview: "Students load BERT and GPT-2 from a pre-staged Hugging Face cache into GPU
+          memory and measure each model's memory footprint, establishing the baseline for
+          fine-tuning and reinforcing the load-use-free memory management pattern."
+      - title: "Fine-tuning Workflow"
+        overview: "Students implement a complete PyTorch fine-tuning loop for BERT sequence
+          classification, add automatic mixed precision with GradScaler, and monitor live GPU
+          utilization via nvidia-smi while training runs."
+      - title: "Optimization and Results"
+        overview: "Students profile GPU memory across training phases, implement gradient
+          accumulation to increase effective batch size without extra memory cost, and work
+          through a guided CUDA out-of-memory error from diagnosis to resolution."
     rcars_overlap_pct: 58
     rcars_top_matches:
       - title: "VLLM Playground"
