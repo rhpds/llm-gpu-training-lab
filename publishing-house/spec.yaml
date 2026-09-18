@@ -82,8 +82,35 @@ approval_checklist:
     catalog_gap: ''
     design_overview: ''
     module_summaries: []
-    rcars_overlap_pct: null
-    rcars_top_matches: []
+    rcars_overlap_pct: 58
+    rcars_top_matches:
+      - title: "VLLM Playground"
+        ci_name: "agd-v2.vllm-playground-aws.prod"
+        url: "https://catalog.demo.redhat.com/catalog?item=agd-v2.vllm-playground-aws.prod"
+        relevance_score: 58
+        why_it_fits: "Covers GPU-accelerated LLM inference and NVIDIA GPU configuration on OpenShift, but focuses on inference serving with vLLM rather than PyTorch fine-tuning, mixed precision training, or CUDA debugging."
+        workloads:
+          - role: "rhel_workload_accelerator_config"
+            collection: "vllm_playground.demo"
+          - role: "rhel_workload_vllm_playground"
+            collection: "vllm_playground.demo"
+      - title: "LB1559: AI/ML Lifecycle at the Edge"
+        ci_name: "summit-2026.lb1559-ai-lifecycle-edge-cnv.prod"
+        url: "https://catalog.demo.redhat.com/catalog?item=summit-2026.lb1559-ai-lifecycle-edge-cnv.prod"
+        relevance_score: 41
+        why_it_fits: "Covers RHOAI and ML lifecycle workflows, but centers on edge/IoT scenarios with TensorFlow and OpenVINO rather than LLM fine-tuning, GPU memory optimization, or CUDA debugging."
+        workloads:
+          - role: "ocp4_workload_openshift_ai"
+            collection: "agnosticd.ai_workloads"
+      - title: "Building Intelligent Apps with Python and RAG"
+        ci_name: "published.intelligent-apps-rag.prod"
+        url: "https://catalog.demo.redhat.com/catalog?item=published.intelligent-apps-rag.prod"
+        relevance_score: 39
+        why_it_fits: "Covers RHOAI and LLM workflows on OpenShift, but focused on RAG architecture and vector databases rather than PyTorch training, GPU memory management, or CUDA debugging."
+        workloads:
+          - role: "ocp4_workload_openshift_ai"
+            collection: "agnosticd.ai_workloads"
+    catalog_gap: "No existing catalog item covers PyTorch-based LLM fine-tuning with CUDA memory optimization and mixed precision training. The closest item (VLLM Playground, 58%) focuses on inference serving with vLLM, not training workflows. This lab fills the training-side gap in the RHOAI/GPU catalog."
     rejections: []
   infra:
     peak_environments: null
