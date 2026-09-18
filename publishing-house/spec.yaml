@@ -6,7 +6,7 @@ project:
   initiative_key: rh1_2027
   showroom_type: classic
   intake_type: new
-  automation_type: ''
+  automation_type: 'ansible'
   description: Hands-on lab teaching large language model fine-tuning using PyTorch
     on GPU-accelerated OpenShift infrastructure
   jira_ticket: RHDPCD-2012
@@ -38,29 +38,40 @@ spec:
       status: not_started
   environment:
     platform: ocp
-    topology: ''
-    cloud_provider: cnv
+    topology: 'per-student'
+    cloud_provider: aws
     max_concurrent_users: null
     ocp_version: '4.21'
     cluster_type: multinode
-    control_plane_instance_count: null
-    control_plane_cpu: null
-    control_plane_ram_gb: null
-    worker_count: null
-    worker_cpu: null
-    worker_ram_gb: null
-    worker_disk_gb: null
+    control_plane_instance_count: 3
+    control_plane_cpu: 8
+    control_plane_ram_gb: 32
+    worker_count: 1
+    worker_cpu: 16
+    worker_ram_gb: 64
+    worker_disk_gb: 100
     vms_per_student: []
     aap_version: ''
-    ai_requirement: ''
+    ai_requirement: 'gpu'
     ai_model_tier: ''
     ai_model_name: ''
-    ai_justification: ''
+    ai_justification: "This lab requires dedicated NVIDIA GPU resources for fine-tuning
+      large language models with PyTorch. Students will work with transformer models (BERT,
+      GPT-2) that have hundreds of millions of parameters. Training these models on CPU would
+      take 50-100x longer per epoch, making iterative experimentation impossible within a
+      workshop timeframe. GPU acceleration is essential for students to complete multiple
+      training runs, experiment with hyperparameters, and understand the practical aspects of
+      LLM fine-tuning. Each student needs access to at least one NVIDIA T4 or A10 GPU with
+      16GB+ VRAM to handle the model sizes and batch sizes used in the exercises."
     non_ga_products: []
     non_ga_access_plan: ''
-    external_services: []
-    gpu_nodes: 0
-    gpu_type: ''
+    external_services:
+      - 'registry.access.redhat.com'
+      - 'quay.io'
+      - 'huggingface.co'
+      - 'pypi.org'
+    gpu_nodes: 1
+    gpu_type: 'T4 or A10 (16GB+ VRAM)'
   duration_hours: 2
   audience: 'intermediate'
 development:

@@ -74,13 +74,13 @@ Intermediate
 
 ## Infrastructure Requirements
 
-- **Cloud provider:** TBD — confirmed in infrastructure phase
-- **Cluster type:** TBD — confirmed in infrastructure phase
-- **OCP version:** TBD — confirmed in infrastructure phase
-- **Topology:** TBD — confirmed in infrastructure phase
-- **Sizing:** TBD — confirmed in infrastructure phase
-- **Automation approach:** TBD — confirmed in infrastructure phase
-- **AI/MaaS:** TBD — confirmed in infrastructure phase
-- **External services:** TBD — confirmed in infrastructure phase
-- **AAP version:** TBD — confirmed in infrastructure phase
-- **Non-GA products:** TBD — confirmed in infrastructure phase
+- **Cloud provider:** AWS (GPU nodes required — CNV does not have GPU capacity)
+- **Cluster type:** Multinode
+- **OCP version:** 4.21
+- **Topology:** Per-student
+- **Sizing:** 3 control plane (8 vCPU, 32GB RAM); 1 GPU worker per student (16 vCPU, 64GB RAM, 100GB disk, 1× NVIDIA T4 or A10 — 16GB+ VRAM)
+- **Automation approach:** Ansible
+- **AI/MaaS:** Dedicated GPU — NVIDIA T4 or A10, 16GB+ VRAM per student. Justification: transformer model fine-tuning (BERT, GPT-2) requires GPU; CPU training would take 50–100× longer per epoch, making iterative experimentation impossible in a workshop setting.
+- **External services:** `registry.access.redhat.com`, `quay.io` (container images); `huggingface.co` (model weight pre-staging during provisioning); `pypi.org` (Python package installation). No external access required during student sessions — models and datasets are cached locally.
+- **AAP version:** N/A
+- **Non-GA products:** None — all products are GA
