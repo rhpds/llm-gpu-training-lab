@@ -13,8 +13,29 @@ project:
   workflow_id: 6e4b5b94-e3ac-49f5-8af3-7ac538ceb5db
 spec:
   title: 'GPU-Accelerated LLM Fine-Tuning with PyTorch'
-  learning_objectives: []
-  modules: []
+  learning_objectives:
+    - "Implement LLM fine-tuning workflows with PyTorch on GPU-accelerated OpenShift"
+    - "Implement GPU memory optimization techniques for transformer models"
+    - "Implement efficient training loops with automatic mixed precision"
+    - "Monitor and debug GPU utilization during LLM training"
+    - "Analyze and troubleshoot CUDA out-of-memory errors"
+  modules:
+    - id: module-01
+      title: "PyTorch GPU Setup"
+      duration_min: 25
+      status: not_started
+    - id: module-02
+      title: "Loading Pre-trained Models"
+      duration_min: 30
+      status: not_started
+    - id: module-03
+      title: "Fine-tuning Workflow"
+      duration_min: 45
+      status: not_started
+    - id: module-04
+      title: "Optimization and Results"
+      duration_min: 20
+      status: not_started
   environment:
     platform: ocp
     topology: ''
@@ -56,7 +77,7 @@ tracking:
   pause_reason: null
 approval_checklist:
   content:
-    prerequisites_verifiable: null
+    prerequisites_verifiable: false
     assessment_strategy: ''
     catalog_gap: ''
     design_overview: ''
