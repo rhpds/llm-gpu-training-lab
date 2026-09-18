@@ -12,7 +12,7 @@ project:
   jira_ticket: RHDPCD-2012
   workflow_id: 6e4b5b94-e3ac-49f5-8af3-7ac538ceb5db
 spec:
-  title: ''
+  title: 'GPU-Accelerated LLM Fine-Tuning with PyTorch'
   learning_objectives: []
   modules: []
   environment:
@@ -40,8 +40,8 @@ spec:
     external_services: []
     gpu_nodes: 0
     gpu_type: ''
-  duration_hours: null
-  audience: ''
+  duration_hours: 2
+  audience: 'intermediate'
 development:
   automation: null
   e2e:
