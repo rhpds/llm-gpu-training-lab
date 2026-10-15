@@ -76,7 +76,8 @@ spec:
   duration_hours: 2
   audience: intermediate
 development:
-  automation: null
+  automation:
+    status: in_progress
   e2e:
     status: not_started
   healthCheck:
