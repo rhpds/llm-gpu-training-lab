@@ -27,7 +27,7 @@ spec:
   - id: module-02
     title: Loading Pre-trained Models
     duration_min: 30
-    status: in_progress
+    status: not_started
   - id: module-03
     title: Fine-tuning Workflow
     duration_min: 45
