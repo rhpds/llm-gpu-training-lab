@@ -77,7 +77,7 @@ spec:
   audience: intermediate
 development:
   automation:
-    status: in_progress
+    status: complete
   e2e:
     status: not_started
   healthCheck:
