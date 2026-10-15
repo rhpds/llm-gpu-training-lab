@@ -6,39 +6,39 @@ project:
   initiative_key: rh1_2027
   showroom_type: classic
   intake_type: new
-  automation_type: 'ansible'
+  automation_type: ansible
   description: Hands-on lab teaching large language model fine-tuning using PyTorch
     on GPU-accelerated OpenShift infrastructure
   jira_ticket: RHDPCD-2012
   workflow_id: 6e4b5b94-e3ac-49f5-8af3-7ac538ceb5db
 spec:
-  title: 'GPU-Accelerated LLM Fine-Tuning with PyTorch'
+  title: GPU-Accelerated LLM Fine-Tuning with PyTorch
   learning_objectives:
-    - "Implement LLM fine-tuning workflows with PyTorch on GPU-accelerated OpenShift"
-    - "Implement GPU memory optimization techniques for transformer models"
-    - "Implement efficient training loops with automatic mixed precision"
-    - "Monitor and debug GPU utilization during LLM training"
-    - "Analyze and troubleshoot CUDA out-of-memory errors"
+  - Implement LLM fine-tuning workflows with PyTorch on GPU-accelerated OpenShift
+  - Implement GPU memory optimization techniques for transformer models
+  - Implement efficient training loops with automatic mixed precision
+  - Monitor and debug GPU utilization during LLM training
+  - Analyze and troubleshoot CUDA out-of-memory errors
   modules:
-    - id: module-01
-      title: "PyTorch GPU Setup"
-      duration_min: 25
-      status: not_started
-    - id: module-02
-      title: "Loading Pre-trained Models"
-      duration_min: 30
-      status: not_started
-    - id: module-03
-      title: "Fine-tuning Workflow"
-      duration_min: 45
-      status: not_started
-    - id: module-04
-      title: "Optimization and Results"
-      duration_min: 20
-      status: not_started
+  - id: module-01
+    title: PyTorch GPU Setup
+    duration_min: 25
+    status: not_started
+  - id: module-02
+    title: Loading Pre-trained Models
+    duration_min: 30
+    status: in_progress
+  - id: module-03
+    title: Fine-tuning Workflow
+    duration_min: 45
+    status: not_started
+  - id: module-04
+    title: Optimization and Results
+    duration_min: 20
+    status: not_started
   environment:
     platform: ocp
-    topology: 'per-student'
+    topology: per-student
     cloud_provider: aws
     max_concurrent_users: null
     ocp_version: '4.21'
@@ -52,28 +52,29 @@ spec:
     worker_disk_gb: 100
     vms_per_student: []
     aap_version: ''
-    ai_requirement: 'gpu'
+    ai_requirement: gpu
     ai_model_tier: ''
     ai_model_name: ''
-    ai_justification: "This lab requires dedicated NVIDIA GPU resources for fine-tuning
-      large language models with PyTorch. Students will work with transformer models (BERT,
-      GPT-2) that have hundreds of millions of parameters. Training these models on CPU would
-      take 50-100x longer per epoch, making iterative experimentation impossible within a
-      workshop timeframe. GPU acceleration is essential for students to complete multiple
-      training runs, experiment with hyperparameters, and understand the practical aspects of
-      LLM fine-tuning. Each student needs access to at least one NVIDIA T4 or A10 GPU with
-      16GB+ VRAM to handle the model sizes and batch sizes used in the exercises."
+    ai_justification: This lab requires dedicated NVIDIA GPU resources for fine-tuning
+      large language models with PyTorch. Students will work with transformer models
+      (BERT, GPT-2) that have hundreds of millions of parameters. Training these models
+      on CPU would take 50-100x longer per epoch, making iterative experimentation
+      impossible within a workshop timeframe. GPU acceleration is essential for students
+      to complete multiple training runs, experiment with hyperparameters, and understand
+      the practical aspects of LLM fine-tuning. Each student needs access to at least
+      one NVIDIA T4 or A10 GPU with 16GB+ VRAM to handle the model sizes and batch
+      sizes used in the exercises.
     non_ga_products: []
     non_ga_access_plan: ''
     external_services:
-      - 'registry.access.redhat.com'
-      - 'quay.io'
-      - 'huggingface.co'
-      - 'pypi.org'
+    - registry.access.redhat.com
+    - quay.io
+    - huggingface.co
+    - pypi.org
     gpu_nodes: 1
-    gpu_type: 'T4 or A10 (16GB+ VRAM)'
+    gpu_type: T4 or A10 (16GB+ VRAM)
   duration_hours: 2
-  audience: 'intermediate'
+  audience: intermediate
 development:
   automation: null
   e2e:
@@ -90,60 +91,70 @@ approval_checklist:
   content:
     prerequisites_verifiable: false
     assessment_strategy: ''
-    catalog_gap: ''
-    design_overview: "This lab addresses the gap in the RHDP AI catalog by giving intermediate
-      Tech Sales professionals a hands-on GPU-accelerated LLM fine-tuning experience on Red Hat
-      OpenShift AI. Students work through a complete PyTorch fine-tuning lifecycle — GPU environment
-      verification, pre-trained model loading, training with automatic mixed precision, and GPU
-      memory profiling — on a dedicated OpenShift cluster with NVIDIA GPU nodes. The lab equips
-      technical sellers with direct experience they can reference in customer conversations about
-      AI workload sizing and OpenShift AI's GPU capabilities."
+    catalog_gap: No existing catalog item covers PyTorch-based LLM fine-tuning with
+      CUDA memory optimization and mixed precision training. The closest item (VLLM
+      Playground, 58%) focuses on inference serving with vLLM, not training workflows.
+      This lab fills the training-side gap in the RHOAI/GPU catalog.
+    design_overview: This lab addresses the gap in the RHDP AI catalog by giving intermediate
+      Tech Sales professionals a hands-on GPU-accelerated LLM fine-tuning experience
+      on Red Hat OpenShift AI. Students work through a complete PyTorch fine-tuning
+      lifecycle — GPU environment verification, pre-trained model loading, training
+      with automatic mixed precision, and GPU memory profiling — on a dedicated OpenShift
+      cluster with NVIDIA GPU nodes. The lab equips technical sellers with direct
+      experience they can reference in customer conversations about AI workload sizing
+      and OpenShift AI's GPU capabilities.
     module_summaries:
-      - title: "PyTorch GPU Setup"
-        overview: "Students verify CUDA availability and GPU device properties within an
-          RHOAI-managed Jupyter workbench, then run basic PyTorch tensor operations to confirm
-          device placement and practice real-time GPU memory tracking."
-      - title: "Loading Pre-trained Models"
-        overview: "Students load BERT and GPT-2 from a pre-staged Hugging Face cache into GPU
-          memory and measure each model's memory footprint, establishing the baseline for
-          fine-tuning and reinforcing the load-use-free memory management pattern."
-      - title: "Fine-tuning Workflow"
-        overview: "Students implement a complete PyTorch fine-tuning loop for BERT sequence
-          classification, add automatic mixed precision with GradScaler, and monitor live GPU
-          utilization via nvidia-smi while training runs."
-      - title: "Optimization and Results"
-        overview: "Students profile GPU memory across training phases, implement gradient
-          accumulation to increase effective batch size without extra memory cost, and work
-          through a guided CUDA out-of-memory error from diagnosis to resolution."
+    - title: PyTorch GPU Setup
+      overview: Students verify CUDA availability and GPU device properties within
+        an RHOAI-managed Jupyter workbench, then run basic PyTorch tensor operations
+        to confirm device placement and practice real-time GPU memory tracking.
+    - title: Loading Pre-trained Models
+      overview: Students load BERT and GPT-2 from a pre-staged Hugging Face cache
+        into GPU memory and measure each model's memory footprint, establishing the
+        baseline for fine-tuning and reinforcing the load-use-free memory management
+        pattern.
+    - title: Fine-tuning Workflow
+      overview: Students implement a complete PyTorch fine-tuning loop for BERT sequence
+        classification, add automatic mixed precision with GradScaler, and monitor
+        live GPU utilization via nvidia-smi while training runs.
+    - title: Optimization and Results
+      overview: Students profile GPU memory across training phases, implement gradient
+        accumulation to increase effective batch size without extra memory cost, and
+        work through a guided CUDA out-of-memory error from diagnosis to resolution.
     rcars_overlap_pct: 58
     rcars_top_matches:
-      - title: "VLLM Playground"
-        ci_name: "agd-v2.vllm-playground-aws.prod"
-        url: "https://catalog.demo.redhat.com/catalog?item=agd-v2.vllm-playground-aws.prod"
-        relevance_score: 58
-        why_it_fits: "Covers GPU-accelerated LLM inference and NVIDIA GPU configuration on OpenShift, but focuses on inference serving with vLLM rather than PyTorch fine-tuning, mixed precision training, or CUDA debugging."
-        workloads:
-          - role: "rhel_workload_accelerator_config"
-            collection: "vllm_playground.demo"
-          - role: "rhel_workload_vllm_playground"
-            collection: "vllm_playground.demo"
-      - title: "LB1559: AI/ML Lifecycle at the Edge"
-        ci_name: "summit-2026.lb1559-ai-lifecycle-edge-cnv.prod"
-        url: "https://catalog.demo.redhat.com/catalog?item=summit-2026.lb1559-ai-lifecycle-edge-cnv.prod"
-        relevance_score: 41
-        why_it_fits: "Covers RHOAI and ML lifecycle workflows, but centers on edge/IoT scenarios with TensorFlow and OpenVINO rather than LLM fine-tuning, GPU memory optimization, or CUDA debugging."
-        workloads:
-          - role: "ocp4_workload_openshift_ai"
-            collection: "agnosticd.ai_workloads"
-      - title: "Building Intelligent Apps with Python and RAG"
-        ci_name: "published.intelligent-apps-rag.prod"
-        url: "https://catalog.demo.redhat.com/catalog?item=published.intelligent-apps-rag.prod"
-        relevance_score: 39
-        why_it_fits: "Covers RHOAI and LLM workflows on OpenShift, but focused on RAG architecture and vector databases rather than PyTorch training, GPU memory management, or CUDA debugging."
-        workloads:
-          - role: "ocp4_workload_openshift_ai"
-            collection: "agnosticd.ai_workloads"
-    catalog_gap: "No existing catalog item covers PyTorch-based LLM fine-tuning with CUDA memory optimization and mixed precision training. The closest item (VLLM Playground, 58%) focuses on inference serving with vLLM, not training workflows. This lab fills the training-side gap in the RHOAI/GPU catalog."
+    - title: VLLM Playground
+      ci_name: agd-v2.vllm-playground-aws.prod
+      url: https://catalog.demo.redhat.com/catalog?item=agd-v2.vllm-playground-aws.prod
+      relevance_score: 58
+      why_it_fits: Covers GPU-accelerated LLM inference and NVIDIA GPU configuration
+        on OpenShift, but focuses on inference serving with vLLM rather than PyTorch
+        fine-tuning, mixed precision training, or CUDA debugging.
+      workloads:
+      - role: rhel_workload_accelerator_config
+        collection: vllm_playground.demo
+      - role: rhel_workload_vllm_playground
+        collection: vllm_playground.demo
+    - title: 'LB1559: AI/ML Lifecycle at the Edge'
+      ci_name: summit-2026.lb1559-ai-lifecycle-edge-cnv.prod
+      url: https://catalog.demo.redhat.com/catalog?item=summit-2026.lb1559-ai-lifecycle-edge-cnv.prod
+      relevance_score: 41
+      why_it_fits: Covers RHOAI and ML lifecycle workflows, but centers on edge/IoT
+        scenarios with TensorFlow and OpenVINO rather than LLM fine-tuning, GPU memory
+        optimization, or CUDA debugging.
+      workloads:
+      - role: ocp4_workload_openshift_ai
+        collection: agnosticd.ai_workloads
+    - title: Building Intelligent Apps with Python and RAG
+      ci_name: published.intelligent-apps-rag.prod
+      url: https://catalog.demo.redhat.com/catalog?item=published.intelligent-apps-rag.prod
+      relevance_score: 39
+      why_it_fits: Covers RHOAI and LLM workflows on OpenShift, but focused on RAG
+        architecture and vector databases rather than PyTorch training, GPU memory
+        management, or CUDA debugging.
+      workloads:
+      - role: ocp4_workload_openshift_ai
+        collection: agnosticd.ai_workloads
     rejections: []
   infra:
     peak_environments: null
