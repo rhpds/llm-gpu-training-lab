@@ -23,7 +23,7 @@ spec:
   - id: module-01
     title: PyTorch GPU Setup
     duration_min: 25
-    status: in_progress
+    status: not_started
   - id: module-02
     title: Loading Pre-trained Models
     duration_min: 30
