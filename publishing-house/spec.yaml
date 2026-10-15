@@ -27,7 +27,7 @@ spec:
   - id: module-02
     title: Loading Pre-trained Models
     duration_min: 30
-    status: complete
+    status: not_started
   - id: module-03
     title: Fine-tuning Workflow
     duration_min: 45
@@ -77,7 +77,7 @@ spec:
   audience: intermediate
 development:
   automation:
-    status: complete
+    status: not_started
   e2e:
     status: not_started
   healthCheck:
